@@ -1,6 +1,8 @@
 import requests
 import json
-apiKey = ''
+import os
+apiKey = dict(os.environ)
+apiKey = apiKey['APIKEY']
 def getCorrencies():
     url = f'https://free.currconv.com/api/v7/currencies?apiKey={apiKey}'
     r = requests.get(url)
