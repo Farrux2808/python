@@ -1,6 +1,8 @@
 import requests
 import json
-token = ''
+import os
+token = dict(os.environ)
+token = token['TOKEN']
 url = f'https://api.telegram.org/bot{token}/'
 
 def getLastMessage():
@@ -17,3 +19,7 @@ def bot(methods, data = {}):
     r = requests.post(url + methods, data=data)
     data = r.json()
     # print(data)
+
+def button(data = {}):
+    r = requests.post(url + 'sendMessage', json=data)
+    data = r.json()
